@@ -1,8 +1,5 @@
 ; ----------------------------------------------------------------------------------------
 ; Returns the number of characters in a string, excluding the final closing character '\0'
-; To assemble and run:
-;
-;     nasm -felf64 ft_strlen.s && ld ft_strlen.o && ./a.out
 ; ----------------------------------------------------------------------------------------
 
           global    ft_strlen
