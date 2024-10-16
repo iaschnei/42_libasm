@@ -10,7 +10,7 @@ ft_strcpy:
           mov rax, 0
 
 loop:
-          mov rbx, [rsi + rax]
+          mov rbx, [rsi + rax]                ; Moving (copying) chars from the second arg to the first
           mov [rdi + rax], rbx
           inc rax
           cmp BYTE [rsi + rax], 0
