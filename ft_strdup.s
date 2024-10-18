@@ -19,7 +19,7 @@ ft_strdup:
           inc rax                           ; Account for the null terminating char
           mov rdi, rax                      ; Puts the len as an argument for malloc
           call malloc wrt ..plt             ; Sets rax to the new buffer's adress,  note: wrt ..plt makes a request to find the location of malloc
-          jc error
+          jz error
           pop rsi                           ; Retrieve the string to copy into an argument for strcpy
           mov rdi, rax                      ; Puts the new buffer as an argument for strcpy
           call ft_strcpy
@@ -28,6 +28,7 @@ ft_strdup:
 error:
           mov r8, rax                       ; save malloc's return value
           call __errno_location wrt ..plt
+          neg r8
           mov [rax], r8                     ; sets errno to malloc's return value
           mov rax, -1
           ret

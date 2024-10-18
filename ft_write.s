@@ -13,12 +13,13 @@ ft_write:
           mov rsi, rsi                      ; string to print
           mov	rax, 1                        ; syscall code for write
           syscall
-          jc error
+          jz error
           ret
 
 error:
           mov r8, rax                       ; save write's return value into r8
           call __errno_location wrt ..plt
+          neg r8
           mov [rax], r8                     ; sets errno to write's return value
           mov rax, -1
           ret
